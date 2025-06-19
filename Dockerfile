@@ -30,12 +30,15 @@ RUN apk add --no-cache --update \
   ca-certificates \
   tzdata \
   fail2ban \
-  bash
+  bash \
+  supervisor \
+  nginx
 
 COPY --from=builder /app/build/ /app/
 COPY --from=builder /app/DockerEntrypoint.sh /app/
 COPY --from=builder /app/x-ui.sh /usr/bin/x-ui
-
+COPY configs/nginx.conf /etc/nginx/http.d/default.conf
+COPY configs/supervisord.conf /etc/supervisord.conf
 
 # Configure fail2ban
 RUN rm -f /etc/fail2ban/jail.d/alpine-ssh.conf \
@@ -53,6 +56,6 @@ RUN rm -f /etc/fail2ban/jail.d/alpine-ssh.conf \
 
 ENV XUI_ENABLE_FAIL2BAN="true"
 VOLUME [ "/etc/x-ui" ]
-EXPOSE 443
+EXPOSE 2055
 CMD [ "./x-ui" ]
 ENTRYPOINT [ "/app/DockerEntrypoint.sh" ]

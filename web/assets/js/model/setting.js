@@ -3,10 +3,10 @@ class AllSetting {
     constructor(data) {
         this.webListen = "";
         this.webDomain = "";
-        this.webPort = 443;
+        this.webPort = 2053;
         this.webCertFile = "";
         this.webKeyFile = "";
-        this.webBasePath = "/";
+        this.webBasePath = "/vpn";
         this.sessionMaxAge = 60;
         this.pageSize = 50;
         this.expireDiff = 0;
