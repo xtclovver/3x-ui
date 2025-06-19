@@ -1,7 +1,7 @@
 class AllSetting {
 
     constructor(data) {
-        this.webListen = "";
+        this.webListen = "0.0.0.0";
         this.webDomain = "";
         this.webPort = 2053;
         this.webCertFile = "";
