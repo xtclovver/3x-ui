@@ -53,6 +53,6 @@ RUN rm -f /etc/fail2ban/jail.d/alpine-ssh.conf \
 
 ENV XUI_ENABLE_FAIL2BAN="true"
 VOLUME [ "/etc/x-ui" ]
-EXPOSE 2053
+EXPOSE 443
 CMD [ "./x-ui" ]
 ENTRYPOINT [ "/app/DockerEntrypoint.sh" ]
